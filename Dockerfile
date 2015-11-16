@@ -12,7 +12,7 @@ RUN cd $HOME \
     && echo $KIBANA_HOME \
     && yum update -y \
     && curl -O https://download.elastic.co/kibana/kibana/kibana-4.2.0-linux-x64.tar.gz \
-    && tar xzvf kibana-4.2.0-linux-x64.tar.gz \
+    && tar xzf kibana-4.2.0-linux-x64.tar.gz \
     && mv -v kibana-4.2.0-linux-x64 $KIBANA_HOME \
     
     && yum clean all \
@@ -25,7 +25,7 @@ ENV ELASTIC_CLUSTER localhost
 
 EXPOSE 5601
 
-RUN useradd elastic
+RUN useradd elastic && chmod -R 777 /opt
 
 USER elastic
 
